@@ -8,7 +8,11 @@ import { motdSettings } from './modules/motdSettings'
 events.serverOpen.on(
     async () => {
 
-        const cmd = command.register( 'motd', 'motd settings form', CommandPermissionLevel.Operator )
+        const cmd = command.register(
+            'motd',
+            'motd settings form',
+            CommandPermissionLevel.Operator
+        )
 
         cmd.overload(
             async ( _param, origin, _output ) => {
