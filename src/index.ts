@@ -3,7 +3,7 @@ import { events } from "bdsx/event"
 import { TextFormat } from "bdsx/util"
 import { Plugin } from './utils/plugin'
 import './commands'
-import './modules/motdLoop'
+import { motdLoop } from "./modules/motdLoop"
 
 export enum langs {
     PL = "PL_pl"
@@ -22,7 +22,7 @@ export const plugin = new Plugin(
     'Custom MOTD',
     {
         language: langs.PL,
-        interval: 10,
+        interval: 5,
         enabled: true,
         values: [
             `${TextFormat.YELLOW}SERVER NAME`,
@@ -34,8 +34,9 @@ export const plugin = new Plugin(
 )
 
 events.serverOpen.on(
-    () => {
+    async () => {
         plugin.log( `launching` )
+        motdLoop.start()
     }
 )
 

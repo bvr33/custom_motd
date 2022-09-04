@@ -10,26 +10,26 @@ export namespace motdLoop {
     let messagesCount: number
 
     export function start(): void {
+        if( plugin.config.values.length == 0 ) plugin.config.values.push( 'SERVER NAME' )
         if( plugin.config.enabled ) {
             updateMessage()
-
             loop = setInterval(
                 () => {
-                    let message: string
+                    let motdValue: string
                     if( messagesCount > 1 ) {
                         if( messageIndex >= messagesCount ) messageIndex = 0
                         else messageIndex++
                     } else messageIndex = 0
 
-                    message = plugin.config.values[messageIndex]
+                    motdValue = plugin.config.values[messageIndex]
 
                     if( plugin.config.enabled ) {
                         bedrockServer.serverInstance.setMotd( serverProperties["server-name"]! )
                         stop()
                         return
                     }
-                    bedrockServer.serverInstance.setMotd( message )
-
+                    bedrockServer.serverInstance.setMotd( motdValue )
+                    plugin.log( 'work!!!' )
                 },
                 1000 * plugin.config.interval
             )
@@ -44,11 +44,5 @@ export namespace motdLoop {
         plugin.updateConfig()
         messagesCount = plugin.config.values.length - 1
     }
-
-    events.serverOpen.on(
-        async () => {
-            start()
-        }
-    )
 
 }

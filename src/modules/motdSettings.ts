@@ -4,7 +4,7 @@ import { TextFormat } from "bdsx/util"
 import { plugin } from ".."
 import { motdLoop } from "./motdLoop"
 
-export const motdSettings = ( commandUser: ServerPlayer ) => {
+export const mainmenu = ( commandUser: ServerPlayer ) => {
     const f = new SimpleForm( 'Motd Settings' )
     f.addButton( new FormButton( 'Add Message' ) )
     f.addButton( new FormButton( 'Delete Message' ) )
@@ -37,7 +37,7 @@ const addMotd = ( commandUser: ServerPlayer ) => {
                 plugin.updateConfig()
                 motdLoop.updateMessage()
             }
-            motdSettings( commandUser )
+            mainmenu( commandUser )
         }
     )
 }
@@ -60,7 +60,7 @@ const delMotd = ( commandUser: ServerPlayer ) => {
             } )
             plugin.updateConfig()
             motdLoop.updateMessage()
-            motdSettings( commandUser )
+            mainmenu( commandUser )
         }
     )
 }
@@ -74,7 +74,7 @@ const settings = ( commandUser: ServerPlayer ) => {
             plugin.config.enabled = response[0]
             plugin.config.interval = response[1]
             plugin.updateConfig()
-            motdSettings( commandUser )
+            mainmenu( commandUser )
         }
     )
 }
