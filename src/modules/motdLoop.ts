@@ -28,7 +28,6 @@ export namespace motdLoop {
                         return
                     }
                     bedrockServer.serverInstance.setMotd( motdValue )
-                    plugin.log( 'work!!!' )
                 },
                 1000 * plugin.config.interval
             )
