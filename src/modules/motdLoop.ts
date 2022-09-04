@@ -1,4 +1,3 @@
-import { events } from "bdsx/event"
 import { bedrockServer } from "bdsx/launcher"
 import { serverProperties } from "bdsx/serverproperties"
 import { plugin } from ".."
@@ -23,7 +22,7 @@ export namespace motdLoop {
 
                     motdValue = plugin.config.values[messageIndex]
 
-                    if( plugin.config.enabled ) {
+                    if( !plugin.config.enabled ) {
                         bedrockServer.serverInstance.setMotd( serverProperties["server-name"]! )
                         stop()
                         return
