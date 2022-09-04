@@ -14,13 +14,12 @@ export namespace motdLoop {
             updateMessage()
             loop = setInterval(
                 () => {
-                    let motdValue: string
                     if( messagesCount > 1 ) {
                         if( messageIndex >= messagesCount ) messageIndex = 0
                         else messageIndex++
                     } else messageIndex = 0
 
-                    motdValue = plugin.config.values[messageIndex]
+                    let motdValue: string = plugin.config.values[messageIndex]
 
                     if( !plugin.config.enabled ) {
                         bedrockServer.serverInstance.setMotd( serverProperties["server-name"]! )
