@@ -1,5 +1,5 @@
 {
-  "name": "@bdsx/custom-motd",
+  "name": "@bdsx/custom_motd",
   "version": "1.0.0",
   "description": "",
   "main": "src/index.js",
