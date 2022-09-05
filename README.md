@@ -1,3 +1,1 @@
-
-# custom-motd Plugin
-The plugin for bdsx
+# custom-motd Plugin for bdsx
