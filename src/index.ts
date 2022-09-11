@@ -43,6 +43,7 @@ events.serverOpen.on(
 events.serverClose.on(
     () => {
         plugin.log( `closed` )
+        motdLoop.stop()
     }
 );
 
